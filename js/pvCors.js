@@ -26,9 +26,9 @@ $(document).ready(function () {
         insertPageDesc(); //general intro
         insertVocDesc(vocProjects, 'proj_desc');
         insertProjCards('proj_links', vocProjects);
-        
+
     }
-    
+
     initSearch(); //provides js for fuse search
 });
 
@@ -85,18 +85,18 @@ function insertVocDesc(vocProjects, divID) { //?????????????????????? SCRIPT üb
                                             <strong>Top concepts:</strong> ${topConcepts}
                                             <br>
                                             <strong>Concepts:</strong> <span class="badge badge-info badge-pill">${item.count.value}</span>
-                                            ${(item.new.value>0)?('&nbsp;&nbsp;('+item.new.value+' in scheme)'):''}
+                                            ${(item.new.value > 0) ? ('&nbsp;&nbsp;(' + item.new.value + ' in scheme)') : ''}
                                             &nbsp;&nbsp;&nbsp;
                                             <strong>Created:</strong> ${item.modified.value.split('T')[0]}
                                             &nbsp;&nbsp;&nbsp;
-                                            <strong>Codelist:</strong> <a href="${ENDPOINT}?query=${encodeURIComponent(CODELIST_QUERY.replace(/§/g,item.cs.value))}&format=text/html">HTML</a>
+                                            <strong>Codelist:</strong> <a href="${ENDPOINT}?query=${encodeURIComponent(CODELIST_QUERY.replace(/§/g, item.cs.value))}&format=text/html">HTML</a>
                                         </p>
                                     </div>
                                 </div>`);
                 });
             }
             $('.progress-bar').css('width', '100%').attr('aria-valuenow', 100);
-            setTimeout(() => {$('.progress').hide();}, 300);
+            setTimeout(() => { $('.progress').hide(); }, 300);
         });
 }
 
@@ -532,9 +532,9 @@ function createFrontPart(divID, uri, data, props) {
                 case 'prefLabel':
                     //console.log(ul);
                     pL = setUserLang(Array.from(ul).join('|').replace(/  <span class="lang">/g, '@').replace(/<\/span>/g, ''));
-                    html += `<h1 id="prefLabel" class="mt-4${(uri.search('geoscience.earth')<0?` text-muted`:'')}">${pL}</h1>`;
+                    html += `<h1 id="prefLabel" class="mt-4${(uri.search('geoscience.earth') < 0 ? ` text-muted` : '')}">${pL}</h1>`;
 
-                    html += `<p class="${(uri.search('geoscience.earth')<0?' text-muted">':'">')}
+                    html += `<p class="${(uri.search('geoscience.earth') < 0 ? ' text-muted">' : '">')}
                         <button
                             title="copy URI to clip board"
                             style="padding: 0; border: none; background: none; color:#3498db;"
@@ -547,7 +547,7 @@ function createFrontPart(divID, uri, data, props) {
                         <span id="uri" style="word-wrap: break-word;">
                             &nbsp;&nbsp;&nbsp;${uri}
                         </span>
-                        ${(uri.search('geoscience.earth')<0?'&nbsp;&nbsp;&nbsp;<a title="external URI" href="' + uri + '"><i class="fas fa-external-link-alt uriImp"></i></a>':'')}
+                        ${(uri.search('geoscience.earth') < 0 ? '&nbsp;&nbsp;&nbsp;<a title="external URI" href="' + uri + '"><i class="fas fa-external-link-alt uriImp"></i></a>' : '')}
                     </p>
                     <hr>`; //console.log(pL);
                     break;
@@ -574,7 +574,7 @@ function createFrontPart(divID, uri, data, props) {
                         }
                         if (!iconExists) {
                             html += `<span style="margin: 5px;">
-                                    ${i.split('>')[0]+'><i style="color:#3498DB;" class="fas fa-paperclip"></i></a>'}
+                                    ${i.split('>')[0] + '><i style="color:#3498DB;" class="fas fa-paperclip"></i></a>'}
                                 </span>`;
                         }
                     }
@@ -584,7 +584,7 @@ function createFrontPart(divID, uri, data, props) {
                     html += '<div style="float:right;" id="mapsInsert">';
                     for (let i of ul) {
                         html += `<span style="margin: 5px;">
-                                    ${i.split('>')[0]+'><i style="color:#3498DB;" class="fas fa-map"></i></a>'}
+                                    ${i.split('>')[0] + '><i style="color:#3498DB;" class="fas fa-map"></i></a>'}
                                 </span>`;
                     }
                     html += `</div>`;
